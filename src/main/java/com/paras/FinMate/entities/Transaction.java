@@ -9,6 +9,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -45,6 +46,8 @@ public class Transaction {
 
     private String swiftCode;
 
+    private LocalDate transactionDate;
+
     @CreatedDate
     @Column(updatable = false, nullable = false)
     private Timestamp createdDate;
@@ -70,6 +73,9 @@ public class Transaction {
         if (this.status == null) {
             // Set random Status
             this.status = Status.values()[(int) (Math.random() * Status.values().length)];
+        }
+        if (this.transactionDate == null) {
+            this.transactionDate = LocalDate.now();
         }
     }
 
