@@ -1,5 +1,6 @@
 package com.paras.FinMate.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
@@ -32,6 +33,7 @@ public class User implements UserDetails, Principal {
     private String firstName;
     private String lastName;
     private String email;
+    @JsonIgnore
     private String password;
     private Boolean accountLocked;
     private Boolean enabled;
