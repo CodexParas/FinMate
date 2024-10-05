@@ -1,0 +1,24 @@
+services:
+  postgres:
+    container_name: postgres-sql-finMate
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      PGDATA: /var/lib/postgresql/data
+      POSTGRES_DB: bsn
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    ports:
+      - "5434:5432"
+    networks:
+      - finMate-network
+    restart: unless-stopped
+
+networks:
+  finMate-network:
+    driver: bridge
+
+volumes:
+  postgres:
+    driver: local
