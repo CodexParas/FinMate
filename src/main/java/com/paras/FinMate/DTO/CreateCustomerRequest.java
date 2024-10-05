@@ -1,4 +1,4 @@
-package com.paras.FinMate.requests;
+package com.paras.FinMate.DTO;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

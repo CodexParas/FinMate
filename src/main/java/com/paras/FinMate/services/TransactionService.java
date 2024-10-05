@@ -1,12 +1,12 @@
 package com.paras.FinMate.services;
 
+import com.paras.FinMate.DTO.TransactionRequest;
 import com.paras.FinMate.common.Response;
 import com.paras.FinMate.entities.Customer;
 import com.paras.FinMate.entities.Transaction;
 import com.paras.FinMate.exceptions.CustomerNotFoundException;
 import com.paras.FinMate.repositories.CustomerRepo;
 import com.paras.FinMate.repositories.TransactionRepo;
-import com.paras.FinMate.requests.TransactionRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

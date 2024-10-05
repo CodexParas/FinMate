@@ -1,9 +1,9 @@
 package com.paras.FinMate.services;
 
+import com.paras.FinMate.DTO.CreateCustomerRequest;
 import com.paras.FinMate.common.Response;
 import com.paras.FinMate.entities.Customer;
 import com.paras.FinMate.repositories.CustomerRepo;
-import com.paras.FinMate.requests.CreateCustomerRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.stereotype.Service;

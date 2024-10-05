@@ -1,11 +1,11 @@
 package com.paras.FinMate.services;
 
+import com.paras.FinMate.DTO.LoginRequest;
+import com.paras.FinMate.DTO.RegisterRequest;
 import com.paras.FinMate.common.Response;
 import com.paras.FinMate.entities.User;
 import com.paras.FinMate.repositories.RoleRepo;
 import com.paras.FinMate.repositories.UserRepo;
-import com.paras.FinMate.requests.LoginRequest;
-import com.paras.FinMate.requests.RegisterRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.json.JSONObject;

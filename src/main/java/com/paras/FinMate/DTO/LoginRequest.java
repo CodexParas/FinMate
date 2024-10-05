@@ -1,4 +1,4 @@
-package com.paras.FinMate.requests;
+package com.paras.FinMate.DTO;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -11,13 +11,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class RegisterRequest {
-    @NotEmpty(message = "First Name is required")
-    @NotBlank(message = "First Name is required")
-    private String firstName;
-    @NotEmpty(message = "Last Name is required")
-    @NotBlank(message = "Last Name is required")
-    private String lastName;
+public class LoginRequest {
     @NotEmpty(message = "Email is required")
     @NotBlank(message = "Email is required")
     @Email(message = "Email is invalid")

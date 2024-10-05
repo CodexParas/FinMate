@@ -1,8 +1,8 @@
 package com.paras.FinMate.controllers;
 
+import com.paras.FinMate.DTO.CreateCustomerRequest;
+import com.paras.FinMate.DTO.TransactionRequest;
 import com.paras.FinMate.common.Response;
-import com.paras.FinMate.requests.CreateCustomerRequest;
-import com.paras.FinMate.requests.TransactionRequest;
 import com.paras.FinMate.services.CustomerService;
 import com.paras.FinMate.services.TransactionService;
 import jakarta.validation.Valid;
