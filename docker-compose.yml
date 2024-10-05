@@ -6,7 +6,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       PGDATA: /var/lib/postgresql/data
-      POSTGRES_DB: bsn
+      POSTGRES_DB: finmate
     volumes:
       - postgres:/var/lib/postgresql/data
     ports:
