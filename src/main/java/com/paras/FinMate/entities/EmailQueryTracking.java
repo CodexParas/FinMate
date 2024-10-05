@@ -5,6 +5,7 @@ import lombok.*;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.sql.Timestamp;
 
@@ -15,6 +16,7 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @Builder
 @Table(name = "email_query_tracking")
+@EntityListeners(AuditingEntityListener.class)
 public class EmailQueryTracking {
 
     @Id
@@ -56,13 +58,13 @@ public class EmailQueryTracking {
     private Timestamp lastModifiedDate;
 
     @PrePersist
-    private void prePersist() {
+    private void prePersist () {
         if (this.id == null) {
             this.id = generateEmailQueryTrackingId();
         }
     }
 
-    private String generateEmailQueryTrackingId() {
+    private String generateEmailQueryTrackingId () {
         return "EQT" + RandomStringUtils.randomNumeric(7);
     }
 

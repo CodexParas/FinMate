@@ -29,7 +29,7 @@ public class TransactionService {
                                              .amount(Double.parseDouble(transactionRequest.getTransactionAmount()))
                                              .currency(getCurrency(transactionRequest.getTransactionCurrency()))
                                              .customer(customer)
-                                             .swiftCode(transactionRequest.getSwiftCode().isBlank() || transactionRequest.getSwiftCode().isEmpty() ? null : transactionRequest.getSwiftCode())
+                                             .swiftCode(transactionRequest.getSwiftCode())
                                              .build();
         // Save transaction
         transactionRepo.save(transaction);

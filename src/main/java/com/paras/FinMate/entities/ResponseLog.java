@@ -28,21 +28,21 @@ public class ResponseLog {
     private String requestBody;
 
     @Column(nullable = false)
-    private Timestamp sentAt = new Timestamp (System.currentTimeMillis ());
+    private Timestamp sentAt = new Timestamp(System.currentTimeMillis());
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private String responseType;
+    private ResponseType responseType;
 
     @PrePersist
     private void prePersist () {
         if (this.id == null) {
-            this.id = generateResponseLogId ();
+            this.id = generateResponseLogId();
         }
     }
 
     private String generateResponseLogId () {
-        return "RESP" + RandomStringUtils.randomNumeric (6);
+        return "RESP" + RandomStringUtils.randomNumeric(6);
     }
 
     private enum ResponseType {

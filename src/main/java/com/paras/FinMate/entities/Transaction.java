@@ -1,9 +1,12 @@
 package com.paras.FinMate.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.sql.Timestamp;
 
@@ -14,6 +17,7 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @Builder
 @Table(name = "transaction")
+@EntityListeners(AuditingEntityListener.class)
 public class Transaction {
 
     @Id
@@ -21,13 +25,14 @@ public class Transaction {
 
     @ManyToOne
     @JoinColumn(name = "customer_id", nullable = false)
+    @JsonIgnore
     private Customer customer;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private TransactionType transactionType;
 
-    @Column(nullable = false, precision = 15, scale = 2)
+    @Column(nullable = false, precision = 15)
     private Double amount;
 
     @Column(nullable = false)
@@ -50,6 +55,11 @@ public class Transaction {
 
     public static Currency getCurrency (String currency) {
         return Currency.valueOf(currency.toUpperCase());
+    }
+
+    @JsonProperty("customer_name")
+    public String getCustomerId () {
+        return customer.getFullName();
     }
 
     @PrePersist

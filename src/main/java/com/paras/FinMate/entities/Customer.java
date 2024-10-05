@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.sql.Timestamp;
 
@@ -14,6 +15,7 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @Builder
 @Table(name = "customer")
+@EntityListeners(AuditingEntityListener.class)
 public class Customer {
 
     @Id
@@ -38,7 +40,7 @@ public class Customer {
     @PrePersist
     public void prePersist () {
         if (this.accountNumber == null) {
-            this.accountNumber = RandomStringUtils.randomAlphanumeric(10);
+            this.accountNumber = RandomStringUtils.randomNumeric(10);
         }
     }
 

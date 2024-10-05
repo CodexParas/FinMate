@@ -3,6 +3,7 @@ package com.paras.FinMate.entities;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,6 +22,7 @@ import java.util.stream.Collectors;
 @Entity
 @Table(name = "_user")
 @Builder
+@EntityListeners(AuditingEntityListener.class)
 public class User implements UserDetails, Principal {
 
     @Id
@@ -42,7 +44,7 @@ public class User implements UserDetails, Principal {
     private LocalDateTime createdDate;
 
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
+    public Collection<? extends GrantedAuthority> getAuthorities () {
         return this.roles
                 .stream()
                 .map(r -> new SimpleGrantedAuthority(r.getName()))
@@ -50,37 +52,37 @@ public class User implements UserDetails, Principal {
     }
 
     @Override
-    public String getName() {
+    public String getName () {
         return firstName + " " + lastName;
     }
 
     @Override
-    public String getPassword() {
+    public String getPassword () {
         return password;
     }
 
     @Override
-    public String getUsername() {
+    public String getUsername () {
         return email;
     }
 
     @Override
-    public boolean isAccountNonExpired() {
+    public boolean isAccountNonExpired () {
         return true;
     }
 
     @Override
-    public boolean isAccountNonLocked() {
+    public boolean isAccountNonLocked () {
         return !accountLocked;
     }
 
     @Override
-    public boolean isCredentialsNonExpired() {
+    public boolean isCredentialsNonExpired () {
         return true;
     }
 
     @Override
-    public boolean isEnabled() {
+    public boolean isEnabled () {
         return enabled;
     }
 }

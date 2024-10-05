@@ -5,6 +5,7 @@ import lombok.*;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.sql.Timestamp;
 
@@ -15,6 +16,7 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @Builder
 @Table(name = "ticket")
+@EntityListeners(AuditingEntityListener.class)
 public class Ticket {
 
     @Id
@@ -43,13 +45,13 @@ public class Ticket {
     private Timestamp lastModifiedDate;
 
     @PrePersist
-    private void prePersist() {
+    private void prePersist () {
         if (this.id == null) {
             this.id = generateTicketId();
         }
     }
 
-    private String generateTicketId() {
+    private String generateTicketId () {
         return "TICK" + RandomStringUtils.randomNumeric(6);
     }
 
