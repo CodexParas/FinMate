@@ -2,6 +2,7 @@ package com.paras.FinMate.handler;
 
 import com.paras.FinMate.common.Response;
 import com.paras.FinMate.exceptions.CustomerNotFoundException;
+import com.paras.FinMate.exceptions.DataNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -27,6 +28,14 @@ public class GlobalExceptionHandler {
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
                 .body(Response.error("Customer not found", exp.getMessage()));
+    }
+
+    @ExceptionHandler(DataNotFoundException.class)
+    public ResponseEntity<Response> handleException (DataNotFoundException exp) {
+        log.error("Exception occurred: ", exp);
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(Response.error("Data not found", exp.getMessage()));
     }
 
     @ExceptionHandler(DataIntegrityViolationException.class)

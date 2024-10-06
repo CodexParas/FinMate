@@ -140,6 +140,7 @@ public class GmailUtils {
         log.info("Reply sent and threaded successfully!");
     }
 
+
     @SneakyThrows
     private MimeMessage createEmailReply (GmailDTO gmailDTO, String replyText) {
         Properties props = new Properties();

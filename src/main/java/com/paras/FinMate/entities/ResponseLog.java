@@ -24,6 +24,9 @@ public class ResponseLog {
     @Column(nullable = false, columnDefinition = "TEXT")
     private String responseBody;
 
+    @Column(nullable = false)
+    private String threadId;
+
     @Column(nullable = false, columnDefinition = "TEXT")
     private String requestBody;
 
@@ -45,7 +48,7 @@ public class ResponseLog {
         return "RESP" + RandomStringUtils.randomNumeric(6);
     }
 
-    private enum ResponseType {
+    public enum ResponseType {
         AUTO,
         MANUAL
     }

@@ -55,7 +55,7 @@ public class Ticket {
         return "TICK" + RandomStringUtils.randomNumeric(6);
     }
 
-    private enum TicketStatus {
+    public enum TicketStatus {
         OPEN,
         WIP,
         RESOLVED

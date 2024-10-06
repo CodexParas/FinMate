@@ -184,4 +184,16 @@ public class AiUtils {
                             """;
         }
     }
+
+    public String getAttemptsReachedReply (String ticketId) {
+        return String.format(
+                "Dear Customer, <br><br>" +
+                        "Thank you for reaching out to us. Our executives will contact you shortly regarding your request. " +
+                        "Please note your ticket ID for reference: %s. <br><br>" +
+                        "Thank you for your patience.<br><br>" +
+                        "Best regards,<br>" +
+                        "Customer Support Team",
+                ticketId
+                            );
+    }
 }
