@@ -2,13 +2,13 @@ package com.paras.FinMate.DTO;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class TransactionRequest {
     @NotEmpty(message = "Customer ID is required")
     @NotBlank(message = "Customer ID is required")

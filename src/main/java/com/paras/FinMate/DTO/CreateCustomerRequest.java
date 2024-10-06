@@ -3,13 +3,13 @@ package com.paras.FinMate.DTO;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class CreateCustomerRequest {
     @NotEmpty(message = "First Name is required")
     @NotBlank(message = "First Name is required")

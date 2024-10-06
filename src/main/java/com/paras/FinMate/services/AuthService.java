@@ -8,7 +8,6 @@ import com.paras.FinMate.repositories.RoleRepo;
 import com.paras.FinMate.repositories.UserRepo;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.json.JSONObject;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -38,11 +38,11 @@ public class AuthService {
         var user = ((User) auth.getPrincipal());
         claims.put("fullName", user.getName());
         var jwtToken = jwtService.generateToken(claims, user);
-        JSONObject response = new JSONObject();
-        response.put("token", jwtToken);
+        Map<String, String> responseMap = new HashMap<>();
+        responseMap.put("token", jwtToken);
         return Response.builder()
                        .message("Login Successful")
-                       .data(response.toString())
+                       .data(responseMap)
                        .build();
     }
 
@@ -56,7 +56,7 @@ public class AuthService {
                        .email(registerRequest.getEmail())
                        .password(passwordEncoder.encode(registerRequest.getPassword()))
                        .accountLocked(false)
-                       .enabled(false)
+                       .enabled(true)
                        .roles(List.of(userRole))
                        .build();
         userRepository.save(user);

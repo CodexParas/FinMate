@@ -13,7 +13,6 @@ import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.annotation.Scheduled;
 
 import java.util.List;
 
@@ -29,7 +28,7 @@ public class GmailScheduler {
     private final DataInsertUtils dataInsertUtils;
 
     @SneakyThrows
-    @Scheduled(fixedRate = 1000 * 2)
+//    @Scheduled(fixedRate = 1000 * 2)
     public void sendEmails () {
         log.info("Checking for new emails");
         List<GmailDTO> gmailDTOList = gmailUtils.getGmails().orElse(List.of());
