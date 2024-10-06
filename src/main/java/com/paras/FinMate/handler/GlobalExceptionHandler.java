@@ -40,7 +40,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ResponseEntity<Response> handleException (DataIntegrityViolationException exp) {
-//        log.error("Exception occurred: ", exp);
+        log.error("Exception occurred: ", exp);
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
                 .body(Response.error("Customer with email already exists.", "Email already exists"));
