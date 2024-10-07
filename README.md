@@ -1,8 +1,6 @@
-# FinMate
+# FinMate - Your AI Banking Queries Assistant
 
-FinMate is a Spring Boot application designed to facilitate efficient email query tracking and management, utilizing the
-Gmail API. This application allows users to manage customer queries, send automated replies, and track email
-interactions seamlessly.
+**FinMate** is a Spring Boot application designed to facilitate efficient email query tracking and management, utilizing the Gmail API and AI-powered automated responses. This application allows users to manage customer queries, send AI-generated replies, and track email interactions seamlessly.
 
 ## Table of Contents
 
@@ -10,6 +8,7 @@ interactions seamlessly.
 - [Technologies Used](#technologies-used)
 - [Installation](#installation)
 - [Usage](#usage)
+- [AI Integration](#ai-integration)
 - [API Endpoints](#api-endpoints)
 - [Contributing](#contributing)
 - [License](#license)
@@ -17,7 +16,7 @@ interactions seamlessly.
 ## Features
 
 - Track email queries from customers.
-- Send automated replies based on AI-generated responses.
+- Use AI to generate automated replies, ensuring consistent and efficient responses.
 - Manage ticketing for customer queries.
 - Use OAuth 2.0 for secure Gmail API access.
 - Log interactions for better customer service.
@@ -30,6 +29,7 @@ interactions seamlessly.
 - Spring Data JPA
 - PostgreSQL
 - Gmail API
+- OpenAI API for generating replies
 - Jsoup for HTML parsing
 - Lombok for boilerplate code reduction
 
@@ -40,6 +40,7 @@ interactions seamlessly.
 - Java 17 or higher
 - Maven
 - PostgreSQL Database
+- OpenAI API Key
 
 ### Steps
 
@@ -52,7 +53,7 @@ interactions seamlessly.
 
 2. **Update application properties:**
 
-   Modify the `src/main/resources/application.properties` file with your PostgreSQL database credentials:
+   Modify the `src/main/resources/application.properties` file with your PostgreSQL database credentials and OpenAI API key:
 
    ```properties
    spring.datasource.url=jdbc:postgresql://localhost:5432/yourdbname
@@ -76,6 +77,7 @@ interactions seamlessly.
    ```bash
    mvn spring-boot:run
    ```
+
 5. **Access the API documentation:**
 
    Once the application is running, you can access the API documentation at
@@ -88,19 +90,28 @@ To run the application in a Docker container:
 1. **Build the Docker image:**
 
    ```bash
-   docker build -t FinMate-api .
+   docker build -t finmate-api .
    ```
 
 2. **Run the Docker container:**
 
    ```bash
-   docker run -p 8080:8080 FinMate-api
+   docker run -p 8080:8080 finmate-api
    ```
 
 ## Usage
 
 - The application exposes RESTful endpoints for interacting with email queries, ticket management, and sending replies.
 - Ensure you have a valid OAuth 2.0 client ID and secret for accessing the Gmail API.
+
+## AI Integration
+
+The AI component of FinMate leverages OpenAI's API to generate contextually relevant responses to customer queries. This helps streamline customer support and provide prompt, accurate, and personalized responses.
+
+- **Automated Replies**: When a customer query is received, FinMate analyzes the content and generates an appropriate response using AI. The generated response can either be sent automatically or reviewed by a human agent before sending.
+- **Natural Language Processing**: Using OpenAI, the system can understand the intent and tone of customer emails, allowing for more empathetic and helpful replies.
+
+To set up AI integration, ensure that the `spring.ai.openai.api-key` property in `application.properties` is set with your OpenAI API key.
 
 ## API Endpoints
 
@@ -118,6 +129,10 @@ To run the application in a Docker container:
 
 - `POST /api/auth/login` - Authenticate user and return JWT token.
 
+### AI Responses
+
+- `POST /api/email-query/{id}/generate-response` - Generate an AI response for an email query.
+
 ## Contributors
 
 - [Paras Gupta](https://github.com/CodexParas)
@@ -134,11 +149,9 @@ Contributions are welcome! Please submit a pull request or open an issue for dis
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
+---
+
 ### Instructions to Customize:
 
-- Replace `yourusername`, `yourdbname`, `yourpassword`, `your-openai-api-key` and other placeholder values with actual
-  information relevant to
-  your project.
-- You may want to add additional sections for features, API examples, or anything else specific to your application.
-
-Feel free to modify it further or let me know if you want to add anything specific!
+- Replace `yourusername`, `yourdbname`, `yourpassword`, `your-openai-api-key` and other placeholder values with actual information relevant to your project.
+- Feel free to add more features, customize AI functionalities, or adjust the endpoints as per your specific requirements.
