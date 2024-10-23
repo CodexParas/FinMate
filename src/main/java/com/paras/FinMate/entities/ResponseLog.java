@@ -31,7 +31,7 @@ public class ResponseLog {
     private String requestBody;
 
     @Column(nullable = false)
-    private Timestamp sentAt = new Timestamp(System.currentTimeMillis());
+    private Timestamp sentAt;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
@@ -42,6 +42,7 @@ public class ResponseLog {
         if (this.id == null) {
             this.id = generateResponseLogId();
         }
+        this.sentAt = new Timestamp(System.currentTimeMillis());
     }
 
     private String generateResponseLogId () {
