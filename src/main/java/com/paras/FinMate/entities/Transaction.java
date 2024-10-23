@@ -46,7 +46,7 @@ public class Transaction {
 
     private String swiftCode;
 
-    private LocalDate transactionDate;
+    private String transactionDate;
 
     @CreatedDate
     @Column(updatable = false, nullable = false)
@@ -75,7 +75,7 @@ public class Transaction {
             this.status = Status.values()[(int) (Math.random() * Status.values().length)];
         }
         if (this.transactionDate == null) {
-            this.transactionDate = LocalDate.now();
+            this.transactionDate = String.valueOf(LocalDate.now());
         }
     }
 

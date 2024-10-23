@@ -54,13 +54,24 @@ public class DataInsertUtils {
     }
 
     public String insertTicket (GmailDTO gmailDTO) {
+        String email = extractEmail(gmailDTO.getFrom());
         Ticket ticket = Ticket.builder()
-                              .customer(customerRepo.findByEmail(gmailDTO.getFrom()).orElse(null))
+                              .customer(customerRepo.findByEmail(email).orElse(null))
                               .ticketStatus(OPEN)
                               .assignedAgent("Paras")
                               .query(emailQueryTrackingRepo.findByThreadId(gmailDTO.getThreadId()).orElse(null))
                               .build();
         ticketRepo.save(ticket);
         return ticket.getId();
+    }
+
+    public String extractEmail (String input) {
+        if (input == null || input.isEmpty()) {
+            return null;
+        }
+        if (input.contains("<") && input.contains(">")) {
+            return input.substring(input.indexOf("<") + 1, input.indexOf(">")).trim();
+        }
+        return input.trim();
     }
 }

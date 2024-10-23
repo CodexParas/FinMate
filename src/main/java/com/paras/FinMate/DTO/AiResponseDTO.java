@@ -10,7 +10,7 @@ import lombok.*;
 public class AiResponseDTO {
     private String senderEmail;
     private String transactionId;
-    private Double transactionAmount;
+    private String transactionAmount;
     private String transactionCurrency;
     private String transactionDate;
     private String transactionType;
