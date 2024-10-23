@@ -1,6 +1,8 @@
 # FinMate - Your AI Banking Queries Assistant
 
-**FinMate** is a Spring Boot application designed to facilitate efficient email query tracking and management, utilizing the Gmail API and AI-powered automated responses. This application allows users to manage customer queries, send AI-generated replies, and track email interactions seamlessly.
+**FinMate** is a Spring Boot application designed to facilitate efficient email query tracking and management, utilizing
+the Gmail API and AI-powered automated responses. This application allows users to manage customer queries, send
+AI-generated replies, and track email interactions seamlessly.
 
 ## Table of Contents
 
@@ -53,7 +55,8 @@
 
 2. **Update application properties:**
 
-   Modify the `src/main/resources/application.properties` file with your PostgreSQL database credentials and OpenAI API key:
+   Modify the `src/main/resources/application.properties` file with your PostgreSQL database credentials and OpenAI API
+   key:
 
    ```properties
    spring.datasource.url=jdbc:postgresql://localhost:5432/yourdbname
@@ -62,7 +65,13 @@
    spring.ai.openai.api-key=your-openai-api-key
    ```
 
-3. **Install dependencies:**
+3. **Add Google services JSON file:**
+
+    - Download the `credentials.json` file from the Google Cloud Console for your OAuth 2.0 client ID.
+    - Place the `credentials.json` file in the `src/main/resources` directory.
+
+
+4. **Install dependencies:**
 
    Run the following command to install the necessary dependencies:
 
@@ -70,7 +79,7 @@
    mvn clean install
    ```
 
-4. **Run the application:**
+5. **Run the application:**
 
    Start the application using:
 
@@ -78,7 +87,7 @@
    mvn spring-boot:run
    ```
 
-5. **Access the API documentation:**
+6. **Access the API documentation:**
 
    Once the application is running, you can access the API documentation at
    `http://localhost:8080/api/v1/swagger-ui/index.html`.
@@ -106,12 +115,17 @@ To run the application in a Docker container:
 
 ## AI Integration
 
-The AI component of FinMate leverages OpenAI's API to generate contextually relevant responses to customer queries. This helps streamline customer support and provide prompt, accurate, and personalized responses.
+The AI component of FinMate leverages OpenAI's API to generate contextually relevant responses to customer queries. This
+helps streamline customer support and provide prompt, accurate, and personalized responses.
 
-- **Automated Replies**: When a customer query is received, FinMate analyzes the content and generates an appropriate response using AI. The generated response can either be sent automatically or reviewed by a human agent before sending.
-- **Natural Language Processing**: Using OpenAI, the system can understand the intent and tone of customer emails, allowing for more empathetic and helpful replies.
+- **Automated Replies**: When a customer query is received, FinMate analyzes the content and generates an appropriate
+  response using AI. The generated response can either be sent automatically or reviewed by a human agent before
+  sending.
+- **Natural Language Processing**: Using OpenAI, the system can understand the intent and tone of customer emails,
+  allowing for more empathetic and helpful replies.
 
-To set up AI integration, ensure that the `spring.ai.openai.api-key` property in `application.properties` is set with your OpenAI API key.
+To set up AI integration, ensure that the `spring.ai.openai.api-key` property in `application.properties` is set with
+your OpenAI API key.
 
 ## API Endpoints
 
@@ -153,5 +167,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ### Instructions to Customize:
 
-- Replace `yourusername`, `yourdbname`, `yourpassword`, `your-openai-api-key` and other placeholder values with actual information relevant to your project.
-- Feel free to add more features, customize AI functionalities, or adjust the endpoints as per your specific requirements.
+- Replace `yourusername`, `yourdbname`, `yourpassword`, `your-openai-api-key` and other placeholder values with actual
+  information relevant to your project.
+- Feel free to add more features, customize AI functionalities, or adjust the endpoints as per your specific
+  requirements.
